@@ -17,17 +17,31 @@
       "required": true,
       "maxLength": 30
     },
-    "typeImg": {
+    "description": {
       "type": "string"
     },
-    "categoryUID": {
+    "nameuid": {
       "type": "uid",
-      "targetField": "name"
+      "targetField": "name",
+      "required": true
     },
-    "products": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "categoryuid": {
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::field-uuid.uuid"
+    },
+    "subcategories": {
       "type": "relation",
       "relation": "oneToMany",
-      "target": "api::product.product",
+      "target": "api::subcategory.subcategory",
       "mappedBy": "category"
     }
   }

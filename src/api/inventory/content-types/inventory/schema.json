@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "inventories",
+  "info": {
+    "singularName": "inventory",
+    "pluralName": "inventories",
+    "displayName": "inventory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "quantity": {
+      "type": "integer",
+      "required": true,
+      "default": 0
+    },
+    "datemovement": {
+      "type": "datetime",
+      "required": true
+    },
+    "typemovement": {
+      "type": "enumeration",
+      "enum": [
+        "in",
+        "out"
+      ],
+      "required": true
+    },
+    "inventoryuid": {
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::field-uuid.uuid"
+    },
+    "product": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::product.product",
+      "private": true,
+      "inversedBy": "inventories"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "private": true,
+      "inversedBy": "inventories"
+    }
+  }
+}

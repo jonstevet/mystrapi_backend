@@ -24,21 +24,49 @@
     "description": {
       "type": "text"
     },
-    "rating": {
-      "type": "json"
-    },
     "images": {
       "type": "text"
     },
-    "productUID": {
+    "productuid": {
+      "type": "customField",
+      "required": true,
+      "customField": "plugin::field-uuid.uuid"
+    },
+    "reference": {
+      "type": "string",
+      "required": true
+    },
+    "imagetop": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "titleuid": {
       "type": "uid",
       "targetField": "title"
     },
+    "customfield1": {
+      "type": "string"
+    },
+    "customfield2": {
+      "type": "string"
+    },
+    "customfield3": {
+      "type": "string"
+    },
     "category": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "products"
+      "relation": "oneToOne",
+      "target": "api::category.category"
+    },
+    "inventories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::inventory.inventory",
+      "mappedBy": "product"
     }
   }
 }
